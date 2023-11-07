@@ -2,32 +2,20 @@ package com.api.forestoperation.model;
 
 import java.sql.Date;
 
+import com.api.forestoperation.pk.EquipmentStateHistoryPK;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "equipment_state_history")
 public class EquipmentStateHistory {
-	private Equipment equipmentId;
-	private Date date;
-	private EquipmentState equipmentStateId;
+	@EmbeddedId
+	private EquipmentStateHistoryPK id;
 	
-	public Equipment getEquipmentId() {
-		return equipmentId;
-	}
-	public void setEquipmentId(Equipment equipmentId) {
-		this.equipmentId = equipmentId;
-	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	public EquipmentState getEquipmentStateId() {
-		return equipmentStateId;
-	}
-	public void setEquipmentStateId(EquipmentState equipmentStateId) {
-		this.equipmentStateId = equipmentStateId;
-	}
+	@Column(name="date")
+	private Date date;
+
 }
