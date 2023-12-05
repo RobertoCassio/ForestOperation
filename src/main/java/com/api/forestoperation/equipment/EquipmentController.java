@@ -21,7 +21,7 @@ public class EquipmentController {
 	EquipmentService equipmentService;
 	
 	@PostMapping("/equipment")
-	public ResponseEntity<Object> saveEquipment (@RequestBody EquipmentDTO equipmentDTO, UUID id){
+	public ResponseEntity<Object> saveEquipment (EquipmentDTO equipmentDTO){
 			var savedEquipment = equipmentService.createEquipment(equipmentDTO);
 			return savedEquipment != null ? ResponseEntity.status(HttpStatus.CREATED).body(savedEquipment) : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
@@ -31,7 +31,6 @@ public class EquipmentController {
 		List<EquipmentModel> equipments = equipmentService.getAllEquipments();
 		return ResponseEntity.status(HttpStatus.OK).body(equipments);
 	}
-	
 	@GetMapping("/equipment/{id}")
 	public ResponseEntity<Object> getOneEquipment(@PathVariable (value = "id") UUID id){
 		var equipment = equipmentService.getEquipmentById(id);
