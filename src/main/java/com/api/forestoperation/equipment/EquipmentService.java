@@ -10,16 +10,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 
+
 @Service
 public class EquipmentService {
 	@Autowired
 	private EquipmentRepository equipmentRepository;
+
 	
 	
 	public EquipmentModel createEquipment(@RequestBody EquipmentDTO equipmentDTO) {
 		var equipmentModel = new EquipmentModel();
 		BeanUtils.copyProperties(equipmentDTO, equipmentModel);
-			return equipmentRepository.save(equipmentModel);
+		return equipmentRepository.save(equipmentModel);
 	}
 	
 	public List<EquipmentModel> getAllEquipments(){

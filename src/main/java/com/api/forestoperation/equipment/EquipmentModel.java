@@ -3,7 +3,6 @@ package com.api.forestoperation.equipment;
 import java.util.UUID;
 
 import com.api.forestoperation.equipmentmodel.EquipmentModelModel;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,17 +25,11 @@ public class EquipmentModel {
 	@Column(name="name")
 	private String name;
 	
-	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name="equipment_model_id")
 	private EquipmentModelModel equipmentModel;
 	
-	public EquipmentModelModel getEquipmentModel() {
-		return equipmentModel;
-	}
-	public void setEquipmentModel(EquipmentModelModel equipmentModel) {
-		this.equipmentModel = equipmentModel;
-	}
+
 	public UUID getId() {
 		return id;
 	}
@@ -48,5 +41,11 @@ public class EquipmentModel {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public EquipmentModelModel getEquipmentModel() {
+		return equipmentModel;
+	}
+	public void setEquipmentModel(EquipmentModelModel equipmentModel) {
+		this.equipmentModel = equipmentModel;
 	}
 }

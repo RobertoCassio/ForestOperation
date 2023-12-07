@@ -21,7 +21,7 @@ public class EquipmentController {
 	EquipmentService equipmentService;
 	
 	@PostMapping("/equipment")
-	public ResponseEntity<Object> saveEquipment (EquipmentDTO equipmentDTO){
+	public ResponseEntity<Object> saveEquipment (@RequestBody EquipmentDTO equipmentDTO){
 			var savedEquipment = equipmentService.createEquipment(equipmentDTO);
 			return savedEquipment != null ? ResponseEntity.status(HttpStatus.CREATED).body(savedEquipment) : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}
