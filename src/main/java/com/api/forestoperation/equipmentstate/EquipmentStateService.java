@@ -37,7 +37,7 @@ public class EquipmentStateService {
 		}
 		return null;
 	}
-	public boolean deleteEquipmentstate(UUID id) {
+	public boolean deleteEquipmentState(UUID id) {
 		EquipmentStateModel equipmentStateModel = equipmentStateRepository.findById(id).orElse(null);
 		if (equipmentStateModel != null) {
 			equipmentStateRepository.delete(equipmentStateModel);

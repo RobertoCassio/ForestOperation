@@ -19,9 +19,9 @@ public class EquipmentService {
 	
 	
 	public EquipmentModel createEquipment(@RequestBody EquipmentDTO equipmentDTO) {
-		var equipmentModel = new EquipmentModel();
-		BeanUtils.copyProperties(equipmentDTO, equipmentModel);
-		return equipmentRepository.save(equipmentModel);
+			var equipmentModel = new EquipmentModel();
+			BeanUtils.copyProperties(equipmentDTO, equipmentModel);
+			return equipmentRepository.save(equipmentModel);
 	}
 	
 	public List<EquipmentModel> getAllEquipments(){
@@ -40,8 +40,8 @@ public class EquipmentService {
 			return equipmentRepository.save(equipmentModel);
 		}
 		return null;
-		
 	}
+	
 	public boolean deleteEquipment(UUID id) {
 		EquipmentModel equipmentModel = equipmentRepository.findById(id).orElse(null);
 		if (equipmentModel != null) {
