@@ -1,6 +1,7 @@
 package com.api.forestoperation.equipmentstatehistory;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,13 @@ public class EquipmentStateHistoryService {
 	}
 	public List<EquipmentStateHistoryModel> getAllStateHistory(){
 		return equipmentStateHistoryRepository.findAll();
+	}
+	
+	public EquipmentStateHistoryModel getEquipmentStateHistoryByStateAndEquipmentId (UUID equipmentId, UUID equipmentStateId) {
+		EquipmentModel equipmentModel = equipmentRepository.findById(equipmentId).orElse(null);
+		EquipmentStateModel equipmentState = equipmentStateRepository.findById(equipmentStateId).orElse(null);
+		
+		EquipmentStateHistoryPK equipmentStateHistoryPK = new EquipmentStateHistoryPK(equipmentModel, equipmentState);
+		return equipmentStateHistoryRepository.findById(equipmentStateHistoryPK).orElse(null);
 	}
 }
