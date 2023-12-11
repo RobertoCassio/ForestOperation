@@ -1,5 +1,7 @@
 package com.api.forestoperation.equipmentstatehistory;
 
+import java.util.List;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,7 +36,8 @@ public class EquipmentStateHistoryService {
 			return equipmentStateHistoryRepository.save(equipmentStateHistoryModel);
 		}
 		else return null;
-		
-		
+	}
+	public List<EquipmentStateHistoryModel> getAllStateHistory(){
+		return equipmentStateHistoryRepository.findAll();
 	}
 }
