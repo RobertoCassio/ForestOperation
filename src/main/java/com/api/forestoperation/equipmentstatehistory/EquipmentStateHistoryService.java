@@ -49,4 +49,14 @@ public class EquipmentStateHistoryService {
 		EquipmentStateHistoryPK equipmentStateHistoryPK = new EquipmentStateHistoryPK(equipmentModel, equipmentState);
 		return equipmentStateHistoryRepository.findById(equipmentStateHistoryPK).orElse(null);
 	}
+	
+	public EquipmentStateHistoryModel updateEquipmentStateHistory(UUID equipmentId, UUID equipmentStateId, EquipmentStateHistoryDTO equipmentStateHistoryDTO) {
+		if(getEquipmentStateHistoryByStateAndEquipmentId(equipmentId, equipmentStateId) != null) {
+			EquipmentStateHistoryModel equipmentStateHistoryModel = new EquipmentStateHistoryModel();
+			BeanUtils.copyProperties(equipmentStateHistoryDTO, equipmentStateHistoryModel);
+			
+			return equipmentStateHistoryRepository.save(equipmentStateHistoryModel);
+		}
+		return null;
+	}
 }

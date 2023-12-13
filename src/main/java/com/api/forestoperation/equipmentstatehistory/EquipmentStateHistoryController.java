@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +33,12 @@ public class EquipmentStateHistoryController {
 	public ResponseEntity<Object> getEquipmentStateHistoryByIdAndState(@PathVariable(value = "equipmentId") UUID equipmentId, @PathVariable (value = "stateId") UUID stateId){
 		EquipmentStateHistoryModel equipmentStateHistory = equipmentStateHistoryService.getEquipmentStateHistoryByStateAndEquipmentId(equipmentId, stateId);
 		return equipmentStateHistory != null ? ResponseEntity.status(HttpStatus.OK).body(equipmentStateHistory) : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+	}
+	@PutMapping ("/equipment-state-history/{equipmentId}/{stateId}")
+	public ResponseEntity<Object> updateEquipmentStateHistory(@RequestBody EquipmentStateHistoryDTO equipmentStateHistoryDTO, @PathVariable(value = "equipmentId") UUID equipmentId, @PathVariable (value = "stateId") UUID stateId){
+		EquipmentStateHistoryModel updatedEquipmentStateHistoryModel = equipmentStateHistoryService.updateEquipmentStateHistory(equipmentId, stateId, equipmentStateHistoryDTO);
+		return updatedEquipmentStateHistoryModel != null ? 	ResponseEntity.status(HttpStatus.OK).body("EquipmentStateHistory atualizado com sucesso" + updatedEquipmentStateHistoryModel) : ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
 	}
 
 }
