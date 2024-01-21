@@ -50,6 +50,7 @@
         
 	</dependencies>
 
+	<packaging>jar</packaging>
 	<build>
 		<plugins>
 			<plugin>
@@ -57,6 +58,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
+		<finalName>forest-operation</finalName>
 	</build>
 
 </project>
